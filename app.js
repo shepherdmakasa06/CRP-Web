@@ -56,8 +56,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Ensure EmailJS is available
       if (!window.emailjs || typeof emailjs.sendForm !== 'function') {
-        alert(
-          'Email service is not available in the browser. Please check your internet connection and EmailJS configuration.'
+        showNotification(
+          'Email service is not available in the browser. Please check your internet connection and EmailJS configuration.',
+          'error'
         );
         if (button && originalText) {
           button.disabled = false;
@@ -74,14 +75,15 @@ document.addEventListener('DOMContentLoaded', () => {
       emailjs
         .sendForm(serviceId, templateId, '#contact-form')
         .then(() => {
-          alert('Message sent! We will get back to you soon.');
+          showNotification('Message sent! We will get back to you soon.', 'success');
           contactForm.reset();
         })
         .catch((error) => {
           console.error('EmailJS error:', error);
-          alert(
+          showNotification(
             'Sorry, there was a problem sending your message. Error info:\n' +
-              (error && (error.text || error.message || JSON.stringify(error)))
+            (error && (error.text || error.message || JSON.stringify(error))),
+            'error'
           );
         })
         .finally(() => {
@@ -91,6 +93,32 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         });
     });
+  }
+
+  // Custom Notification Helper
+  function showNotification(message, type = 'success') {
+    // Create notification element if it doesn't exist
+    let notification = document.querySelector('.custom-notification');
+    if (!notification) {
+      notification = document.createElement('div');
+      notification.className = 'custom-notification';
+      document.body.appendChild(notification);
+    }
+
+    // Set content and type
+    notification.textContent = message;
+    notification.className = `custom-notification ${type}`;
+
+    // Show notification
+    // Use setTimeout to allow browser to render class change for transition
+    requestAnimationFrame(() => {
+      notification.classList.add('show');
+    });
+
+    // Hide after 3 seconds
+    setTimeout(() => {
+      notification.classList.remove('show');
+    }, 5000);
   }
 
   // Assistant UI
