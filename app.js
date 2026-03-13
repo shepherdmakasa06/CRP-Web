@@ -425,19 +425,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (input.includes('hello') || input.includes('hi') || input.includes('hey')) {
       return (
-        'Hello! I am the Pro‑Tech assistant. I can help with operating system installation,' +
-        ' Windows / Office activation, software installation (AutoCAD, Office, Photoshop),' +
-        ' PC unlocking, RAM / SSD upgrades, and driver installation. ' +
-        'Tell me what is happening with your computer and which of these you think you need.'
+        'Hello! I am the Pro‑Tech assistant. I can help with our services ' +
+        '(OS installation, Windows / Office activation, software installation, PC unlocking, RAM / SSD upgrades, drivers) ' +
+        'and also give general advice about these kinds of computer problems. ' +
+        'Tell me what is happening with your laptop or PC and I will guide you.'
       );
     }
 
-    // Fallback: keep the answer focused on Pro‑Tech services
+    // Fallback: give general tech advice related to Pro‑Tech’s services
     return (
-      'Unfortunately I specialise in explaining the services offered at Pro‑Tech Computer Repairs only. ' +
-      'Our main services are: OS installation (Windows 10/11, Zorin), Windows and Office activation, software installs (AutoCAD, Office, Photoshop), ' +
-      'PC unlocking, RAM / SSD upgrades, and driver installation. If your message is not clearly about these, I would recommend sending us a message ' +
-      'using the contact form on this page or calling us directly on +263 71 769 2705 so we can help you properly.'
+      'I may not fully understand that question, but I can still give general computer advice related to our services. ' +
+      'If your issue is about things like a slow or freezing PC, installing or activating Windows / Office, software that will not install, ' +
+      'password or unlocking problems, drivers (Wi‑Fi, sound, display) or data / backup questions, describe what you see on the screen in simple words ' +
+      "and I'll suggest practical steps you can try and when it is safer to bring the machine to Pro‑Tech for hands‑on help."
     );
   }
 
